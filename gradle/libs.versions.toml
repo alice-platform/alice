@@ -1,0 +1,80 @@
+[versions]
+kotlin = "2.3.0"
+slf4j = "2.0.17"
+junit = "6.0.2"
+clikt = "5.1.0"
+logback = "1.5.25"
+jackson = "3.0.3"
+#hocon = "1.4.3"
+coroutines = "1.10.2"
+reactor = "3.8.2"
+rxjava = "3.1.12"
+
+spring = "7.0.2"
+spring-boot = "4.0.2"
+
+kotlinx-io = "0.8.2"
+kotlinx-datetime = "0.7.1"
+
+okhttp = "5.3.2"
+apache-http-client = "5.6"
+
+[libraries]
+slf4j = { module = "org.slf4j:slf4j-api", version.ref = "slf4j" }
+
+kotlinStdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
+kotlinReflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
+kotlinStdlibJdk8 = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8", version.ref = "kotlin" }
+
+kotlinx-io = { group = "org.jetbrains.kotlinx", name = "kotlinx-io-core", version.ref = "kotlinx-io" }
+kotlinx-datetime = { group = "org.jetbrains.kotlinx", name = "kotlinx-datetime", version.ref = "kotlinx-datetime" }
+
+jacksonKotlin = { module = "tools.jackson.module:jackson-module-kotlin", version.ref = "jackson" }
+jacksonDatabind = { module = "tools.jackson.core:jackson-databind", version.ref = "jackson" }
+jacksonYaml = { module = "tools.jackson.dataformat:jackson-dataformat-yaml", version.ref = "jackson" }
+jacksonProperties = { module = "tools.jackson.dataformat:jackson-dataformat-properties", version.ref = "jackson" }
+jacksonToml = { module = "tools.jackson.dataformat:jackson-dataformat-toml", version.ref = "jackson" }
+#hocon = { module = "com.typesafe:config", version.ref = "hocon" }
+
+coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
+clikt = { module = "com.github.ajalt.clikt:clikt", version.ref = "clikt" }
+
+reactor = { group = "io.projectreactor", name = "reactor-core", version.ref = "reactor" }
+rxjava = { group = "io.reactivex.rxjava3", name = "rxjava", version.ref = "rxjava" }
+
+logback = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
+
+spring-context = { group = "org.springframework", name = "spring-context", version.ref = "spring" }
+spring-web = { group = "org.springframework", name = "spring-web", version.ref = "spring" }
+spring-security = { group = "org.springframework.security", name = "spring-security-web", version.ref = "spring" }
+spring-data-jpa = { group = "org.springframework.data", name = "spring-data-jpa", version.ref = "spring-boot" }
+
+junitJupiter = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "junit" }
+junitEngine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit" }
+
+okhttp = { module = "com.squareup.okhttp3:okhttp-jvm", version.ref = "okhttp" }
+apache-http-client = { module = "org.apache.httpcomponents.client5:httpclient5", version.ref = "apache-http-client" }
+
+[bundles]
+
+engineDiscord = []
+engineTwitch = []
+engineSlack = []
+engineTelegram = []
+engineWhatsApp = []
+
+engineWeb = []
+engineData = []
+
+common-reactive = ["coroutines", "reactor", "rxjava"]
+common-kotlinx = ["kotlinx-io", "kotlinx-datetime"]
+common = ["slf4j", "kotlinStdlibJdk8", "kotlinStdlib", "kotlinReflect"]
+root = ["clikt", "logback"]
+spring = [ "spring-context", "spring-data-jpa", "spring-web", "spring-security" ]
+
+clients = [ "okhttp", "apache-http-client"  ]
+
+#server = ["clikt", "logback", "kotlinScriptingCommon", "kotlinScriptingJvm", "kotlinScriptingJvmHost", "kotlinReflect"]
+jackson = ["jacksonDatabind", "jacksonYaml", "jacksonProperties", "jacksonToml", "jacksonKotlin"]
+test = ["junitJupiter", "logback"]
+testRuntime = ["junitEngine"]
